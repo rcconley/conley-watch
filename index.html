@@ -6,9 +6,11 @@
     <title>Custom Mechanical Watch Builds</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
             background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
         }
         .container {
             max-width: 1000px;
@@ -16,7 +18,20 @@
             padding: 20px;
         }
         .header {
-            margin-bottom: 20px;
+            margin-bottom: 40px; /* Increased bottom margin for better spacing */
+            padding: 10px;
+            background-color: #e8eaf6; /* Soft background color for the header */
+            border-radius: 8px; /* Rounded corners for the header */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+        }
+        .header h1 {
+            font-size: 2.8em; /* Larger font size for the main title */
+            color: #2c3e50; /* Dark blue color for a more elegant look */
+            margin: 0;
+        }
+        .header p {
+            font-size: 1.4em; /* Larger font size for the subtitle */
+            color: #6c7a89; /* Lighter shade for the subtitle */
         }
         .gallery img {
             width: 100%;
@@ -24,23 +39,24 @@
             height: auto;
             margin: 10px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: transform 0.3s;
+            border-radius: 5px; /* Rounded corners for images */
         }
         .gallery img:hover {
             transform: scale(1.1);
         }
         .button-container {
-            margin-top: 20px;
+            margin-top: 30px; /* More margin to separate it from the gallery */
         }
         .contact-button {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 24px; /* Larger button for better clickability */
             text-align: center;
             text-decoration: none;
             display: inline-block;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 18px; /* Larger font size for better readability */
             border: none;
             cursor: pointer;
         }
