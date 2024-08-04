@@ -10,6 +10,8 @@
             text-align: center;
             background-color: #f4f4f4;
             color: #333;
+            margin: 0;
+            padding: 0;
         }
         .container {
             max-width: 1000px;
@@ -29,11 +31,17 @@
             font-size: 1.2em;
             color: #7f8c8d;
         }
+        .gallery-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 10px 0;
+        }
         .gallery img {
+            display: inline-block;
             width: 100%;
             max-width: 300px;
             height: auto;
-            margin: 10px;
+            margin: 0 10px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
@@ -64,7 +72,7 @@
             <h1>Custom Mechanical Watch Builds</h1>
             <p>By Chaise Conley</p>
         </div>
-        <div class="gallery">
+        <div class="gallery-container">
             <img src="images/453629105_26481751484771540_3718378552680472883_n.jpg" alt="Watch 1">
             <img src="images/453605451_26481751284771560_4615516373168698365_n.jpg" alt="Watch 2">
             <img src="images/453481979_26481751381438217_5646044133204251291_n.jpg" alt="Watch 3">
