@@ -9,6 +9,7 @@
             font-family: Arial, sans-serif;
             text-align: center;
             background-color: #f4f4f4;
+            color: #333;
         }
         .container {
             max-width: 1000px;
@@ -18,11 +19,23 @@
         .header {
             margin-bottom: 20px;
         }
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.3em;
+        }
+        .header p {
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
         .gallery img {
             width: 100%;
             max-width: 300px;
             height: auto;
             margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .button-container {
             margin-top: 20px;
@@ -38,6 +51,10 @@
             font-size: 16px;
             border: none;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .contact-button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
