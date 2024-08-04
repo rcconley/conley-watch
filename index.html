@@ -15,7 +15,7 @@
         }
         .container {
             max-width: 1000px;
-            margin: 0 auto;
+            margin: 20px auto;
             padding: 20px;
         }
         .header {
@@ -23,58 +23,47 @@
         }
         .header h1 {
             font-size: 2.5em;
-            font-weight: bold;
             color: #2c3e50;
-            margin-bottom: 0.3em;
         }
         .header p {
             font-size: 1.2em;
             color: #7f8c8d;
         }
-        .gallery-container {
-            display: flex;
-            overflow-x: auto;
-            white-space: nowrap;
-            padding: 10px 0;
+        .carousel {
+            position: relative;
+            max-width: 600px;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
         }
-        .gallery img {
-            flex: 0 0 auto;
+        .carousel img {
             width: 100%;
-            max-width: 300px;
-            height: auto;
-            margin: 0 10px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none; /* Hide images by default */
         }
-        .button-container {
-            margin-top: 20px;
+        .active {
+            display: block; /* Show the active image */
         }
-        .contact-button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            border-radius: 5px;
-            font-size: 16px;
-            border: none;
+        .prev, .next {
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.5);
         }
-        .contact-button:hover {
-            background-color: #45a049;
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
         }
-        /* Optional: Customize scrollbar */
-        .gallery-container::-webkit-scrollbar {
-            height: 8px;
-        }
-        .gallery-container::-webkit-scrollbar-thumb {
-            background-color: #888;
-            border-radius: 10px;
-        }
-        .gallery-container::-webkit-scrollbar-thumb:hover {
-            background-color: #555;
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
         }
     </style>
 </head>
@@ -84,16 +73,8 @@
             <h1>Custom Mechanical Watch Builds</h1>
             <p>By Chaise Conley</p>
         </div>
-        <div class="gallery-container">
-            <img src="images/453629105_26481751484771540_3718378552680472883_n.jpg" alt="Watch 1">
+        <div class="carousel">
+            <img class="active" src="images/453629105_26481751484771540_3718378552680472883_n.jpg" alt="Watch 1">
             <img src="images/453605451_26481751284771560_4615516373168698365_n.jpg" alt="Watch 2">
             <img src="images/453481979_26481751381438217_5646044133204251291_n.jpg" alt="Watch 3">
-            <img src="images/453406812_26481751084771580_2971339121052479931_n.jpg" alt="Watch 4">
-            <!-- Add more images as needed -->
-        </div>
-        <div class="button-container">
-            <a href="mailto:chaiseconley@gmail.com?subject=%5BINQUIRY%5D%20Custom%20Mechanical%20Watches" class="contact-button">Contact Me</a>
-        </div>
-    </div>
-</body>
-</html>
+            <
