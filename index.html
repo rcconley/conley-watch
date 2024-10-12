@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CONLEY WATCHES - Custom Watch Builds</title>
     <link rel="icon" href="images/tab_logo.png" type="image/png">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Dancing+Script:wght@700&display=swap');
 
@@ -38,21 +39,71 @@
         .header p {
             font-family: 'Dancing Script', cursive;
             font-size: 1.5em;
-            color: silver; /* Match the color to the silver letters in the heading */
+            color: silver;
             margin-top: 5px;
         }
-        .gallery img {
+
+        /* Swiper Styles */
+        .swiper-container {
             width: 100%;
-            max-width: 300px;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .swiper-wrapper {
+            display: flex;
+            transition: all 0.3s;
+        }
+
+        .swiper-slide {
+            width: 400px;
             height: auto;
-            margin: 10px;
-            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: auto;
             transition: transform 0.3s;
             border-radius: 5px;
         }
-        .gallery img:hover {
+
+        /* Visible image will be scaled and have no opacity, rest will fade and scale */
+        .swiper-slide-active img {
             transform: scale(1.1);
+            opacity: 1;
         }
+
+        .swiper-slide-next img, 
+        .swiper-slide-prev img {
+            opacity: 0.5;
+            transform: scale(0.9);
+        }
+
+        /* Fog-like effect on sides */
+        .swiper-container::before, 
+        .swiper-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 15%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .swiper-container::before {
+            left: 0;
+            background: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0,0,0,0));
+        }
+
+        .swiper-container::after {
+            right: 0;
+            background: linear-gradient(to left, rgba(0,0,0,0.5), rgba(0,0,0,0));
+        }
+
         .button-container {
             margin-top: 30px;
         }
@@ -68,47 +119,14 @@
             border: 1px solid #cfd8dc; /* Subtle border */
             cursor: pointer;
             transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Softer box shadow */
-            letter-spacing: 0.5px; /* Slightly increased letter spacing */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
         }
         
         .contact-button:hover {
-            background-color: #37474f; /* Slightly darker shade on hover */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Slightly stronger shadow on hover */
-            transform: scale(1.05); /* Slight scale up on hover */
-        }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            padding-top: 100px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.9);
-        }
-        .modal-content {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 700px;
-        }
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
+            background-color: #37474f;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -120,40 +138,39 @@
             </h1>
             <p>By Chaise Conley</p>
         </div>
-        <div class="gallery">
-            <img src="images/453629105_26481751484771540_3718378552680472883_n.jpg" alt="Watch 1" onclick="openModal(this)">
-            <img src="images/IMG_7378.jpg" alt="Watch 10" onclick="openModal(this)">
-            <img src="images/IMG_6613.jpg" alt="Watch 3" onclick="openModal(this)">
-            <img src="images/453481979_26481751381438217_5646044133204251291_n.jpg" alt="Watch 6" onclick="openModal(this)">
-            <img src="images/IMG_6670.jpg" alt="Watch 7" onclick="openModal(this)">
-            <img src="images/453406812_26481751084771580_2971339121052479931_n.jpg" alt="Watch 4" onclick="openModal(this)">
-            <img src="images/12345.png" alt="Watch 8" onclick="openModal(this)">
-            <img src="images/IMG_6551.jpg" alt="Watch 5" onclick="openModal(this)">
-            <img src="images/1234.png" alt="Watch 9" onclick="openModal(this)">
-            <img src="images/453605451_26481751284771560_4615516373168698365_n.jpg" alt="Watch 2" onclick="openModal(this)">
-            <img src="images/IMG_7477.png" alt="Watch 156153" onclick="openModal(this)">
-            <img src="images/IMG_7484.png" alt="Watch 1455515" onclick="openModal(this)">
+
+        <!-- Swiper Slider -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="images/453629105_26481751484771540_3718378552680472883_n.jpg" alt="Watch 1"></div>
+                <div class="swiper-slide"><img src="images/IMG_7378.jpg" alt="Watch 2"></div>
+                <div class="swiper-slide"><img src="images/IMG_6613.jpg" alt="Watch 3"></div>
+                <div class="swiper-slide"><img src="images/453481979_26481751381438217_5646044133204251291_n.jpg" alt="Watch 4"></div>
+                <div class="swiper-slide"><img src="images/IMG_6670.jpg" alt="Watch 5"></div>
+                <div class="swiper-slide"><img src="images/453406812_26481751084771580_2971339121052479931_n.jpg" alt="Watch 6"></div>
+                <div class="swiper-slide"><img src="images/12345.png" alt="Watch 7"></div>
+                <div class="swiper-slide"><img src="images/IMG_6551.jpg" alt="Watch 8"></div>
+                <div class="swiper-slide"><img src="images/1234.png" alt="Watch 9"></div>
+                <div class="swiper-slide"><img src="images/453605451_26481751284771560_4615516373168698365_n.jpg" alt="Watch 10"></div>
+            </div>
         </div>
+
         <div class="button-container">
             <a href="mailto:chaiseconley@gmail.com?subject=%5BINQUIRY%5D%20Custom%20Mechanical%20Watches" class="contact-button">Contact Me</a>
         </div>
     </div>
-    <div id="myModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="img01">
-    </div>
-    <script>
-        function openModal(img) {
-            var modal = document.getElementById("myModal");
-            var modalImg = document.getElementById("img01");
-            modal.style.display = "block";
-            modalImg.src = img.src;
-        }
 
-        function closeModal() {
-            var modal = document.getElementById("myModal");
-            modal.style.display = "none";
-        }
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1.5, // Shows 1.5 slides, half of next and previous slides will be visible
+            spaceBetween: 20, // Space between slides
+            centeredSlides: true, // Center the active slide
+            loop: true, // Enable looping through slides
+            effect: 'slide', // Slide effect for smooth transitions
+            slideToClickedSlide: true, // Clicking on a slide brings it into view
+        });
     </script>
 </body>
 </html>
