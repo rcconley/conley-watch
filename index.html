@@ -1,52 +1,251 @@
-<style>
-    /* Header container */
-    .header {
-        margin-bottom: 40px;
-        padding: 20px;
-        background-color: #455a64;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        position: relative;
-        display: inline-block;
-        overflow: hidden;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONLEY WATCHES - Custom Watch Builds</title>
+    <link rel="icon" href="images/tab_logo.png" type="image/png">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Dancing+Script:wght@700&display=swap');
 
-    /* Ticking effect container */
-    .header h1 {
-        font-family: 'Lora', serif;
-        font-size: 2.5em;
-        color: transparent;
-        background: linear-gradient(to bottom, #c0c0c0, #a9a9a9);
-        -webkit-background-clip: text;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        margin: 0;
-        padding-bottom: 0;
-        position: relative;
-        display: inline-block;
-        white-space: nowrap;
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #455a64, #cfd8dc, #455a64); /* Dark on left and right, light in the middle */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            margin-bottom: 40px;
+            padding: 10px;
+            background-color: #455a64;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
 
-    /* Animate the ticking effect */
-    .tick {
-        display: inline-block;
-        font-family: 'Lora', serif;
-        font-size: 0.7em;
-        color: #c0c0c0;
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        animation: tick-animation 0.166s steps(6, end) infinite; /* 6 ticks per second */
-    }
+        .header h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin: 0;
+            padding-bottom: 0;
+        }
+        .header p {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5em;
+            color: silver;
+            margin-top: 5px;
+        }
 
-    /* Keyframes for the ticking effect */
-    @keyframes tick-animation {
-        0% { transform: translateY(-50%) rotate(0deg); }
-        100% { transform: translateY(-50%) rotate(360deg); }
-    }
-</style>
+        /* Swiper Styles */
+        .swiper-container {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
 
-<div class="header">
-    <h1>Conley Watches</h1>
-    <div class="tick">|</div> <!-- Ticking hand -->
-</div>
+        .swiper-wrapper {
+            display: flex;
+            transition: all 0.3s;
+        }
+
+        .swiper-slide {
+            width: 400px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .swiper-slide-active img {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        .swiper-slide-next img, 
+        .swiper-slide-prev img {
+            opacity: 0.5;
+            transform: scale(0.9);
+        }
+
+        /* Fog-like effect on sides */
+        .swiper-container::before, 
+        .swiper-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 15%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .swiper-container::before {
+            left: 0;
+            background: linear-gradient(to right, #455a64, rgba(69, 90, 100, 0));
+        }
+
+        .swiper-container::after {
+            right: 0;
+            background: linear-gradient(to left, #455a64, rgba(69, 90, 100, 0));
+        }
+
+        /* Navigation arrows */
+        .swiper-button-next, .swiper-button-prev {
+            color: white;
+            font-size: 2em;
+            opacity: 0.6;
+        }
+
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            opacity: 1;
+        }
+
+        .button-container {
+            margin-top: 30px;
+        }
+        .contact-button {
+            background-color: #455a64;
+            color: white;
+            padding: 12px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 8px;
+            font-size: 18px;
+            border: 1px solid #cfd8dc;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            letter-spacing: 0.5px;
+        }
+        
+        .contact-button:hover {
+            background-color: #37474f;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 style="font-family: 'Lora', serif; font-size: 2.5em; color: transparent; background: linear-gradient(to bottom, #c0c0c0, #a9a9a9); -webkit-background-clip: text; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">
+                Custom Watch Builds
+            </h1>
+            <p>By Chaise Conley</p>
+        </div>
+
+        <!-- Swiper Slider -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="images/453629105_26481751484771540_3718378552680472883_n.jpg" alt="Watch 1" onclick="openModal(this)"></div>
+                <div class="swiper-slide"><img src="images/IMG_7378.jpg" alt="Watch 2" onclick="openModal(this)"></div>
+                <div class="swiper-slide"><img src="images/IMG_6613.jpg" alt="Watch 3" onclick="openModal(this)"></div>
+                <div class="swiper-slide"><img src="images/453481979_26481751381438217_5646044133204251291_n.jpg" alt="Watch 4" onclick="openModal(this)"></div>
+                <div class="swiper-slide"><img src="images/IMG_6670.jpg" alt="Watch 5" onclick="openModal(this)"></div>
+                <div class="swiper-slide"><img src="images/453406812_26481751084771580_2971339121052479931_n.jpg" alt="Watch 6" onclick="openModal(this)"></div>
+                <div class="swiper-slide"><img src="images/12345.png" alt="Watch 7" onclick="openModal(this)"></div>
+                <div class="swiper-slide"><img src="images/IMG_6551.jpg" alt="Watch 8" onclick="openModal(this)"></div>
+                <div class="swiper-slide"><img src="images/1234.png" alt="Watch 9" onclick="openModal(this)"></div>
+                <div class="swiper-slide"><img src="images/453605451_26481751284771560_4615516373168698365_n.jpg" alt="Watch 10" onclick="openModal(this)"></div>
+            </div>
+
+            <!-- Arrows for navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
+        <div class="button-container">
+            <a href="mailto:chaiseconley@gmail.com?subject=%5BINQUIRY%5D%20Custom%20Mechanical%20Watches" class="contact-button">Contact Me</a>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="img01">
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 1.5,
+            spaceBetween: 20,
+            centeredSlides: true,
+            loop: true,
+            effect: 'slide',
+            slideToClickedSlide: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+
+        // Modal logic
+        function openModal(img) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("img01");
+            modal.style.display = "block";
+            modalImg.src = img.src;
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
