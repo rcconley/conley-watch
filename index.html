@@ -176,6 +176,65 @@
             text-decoration: none;
             cursor: pointer;
         }
+
+        /* Media Queries for mobile responsiveness */
+        @media only screen and (max-width: 768px) {
+            .container {
+                max-width: 90%; /* Adjust container width for smaller screens */
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 2em; /* Smaller font size on mobile */
+            }
+
+            .header p {
+                font-size: 1.2em; /* Adjust subheading for mobile */
+            }
+
+            /* Adjust Swiper height for smaller screens */
+            .swiper-container {
+                height: 300px; /* Smaller height for mobile */
+            }
+
+            .swiper-slide {
+                width: 100%; /* Make the slides take full width on mobile */
+            }
+
+            /* Adjust modal image on mobile */
+            .modal-content {
+                width: 90%; /* Ensure modal fits smaller screens */
+            }
+
+            .contact-button {
+                font-size: 16px; /* Slightly smaller button text */
+                padding: 10px 20px;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            /* For very small screens (like small phones), make further adjustments */
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .header p {
+                font-size: 1em;
+            }
+
+            .swiper-container {
+                height: 250px; /* Even smaller Swiper container */
+            }
+
+            .swiper-slide {
+                height: 250px; /* Make Swiper slides fit in the smaller height */
+            }
+
+            .contact-button {
+                font-size: 14px; /* Smaller button text */
+                padding: 8px 16px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -232,6 +291,16 @@
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
+            breakpoints: {
+                768: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                },
+                480: {
+                    slidesPerView: 1,
+                    spaceBetween: 5,
+                }
+            }
         });
 
         // Modal logic
