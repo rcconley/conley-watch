@@ -21,21 +21,41 @@
             margin: 0 auto;
             padding: 20px;
         }
+
+        /* Header container without background */
         .header {
             margin-bottom: 40px;
             padding: 10px;
-            background-color: #455a64;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: inline-block;
+            position: relative;
         }
 
+        /* Header text styling */
         .header h1 {
             font-family: 'Lora', serif;
             font-size: 2.5em;
             color: #2c3e50;
             margin: 0;
             padding-bottom: 0;
+            display: inline-block;
+            white-space: nowrap;
+            letter-spacing: 3px;
+            position: relative;
         }
+
+        /* Initial letter styles, no shadow */
+        .header h1 span {
+            display: inline-block;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        /* Active ticking effect */
+        .header h1 span.active {
+            color: #c0c0c0; /* The color of the active ticking letter */
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+        }
+
         .header p {
             font-family: 'Dancing Script', cursive;
             font-size: 1.5em;
@@ -240,8 +260,10 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1 style="font-family: 'Lora', serif; font-size: 2.5em; color: transparent; background: linear-gradient(to bottom, #c0c0c0, #a9a9a9); -webkit-background-clip: text; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">
-                Custom Watch Builds
+            <h1 id="ticking-header">
+                <span>C</span><span>u</span><span>s</span><span>t</span><span>o</span><span>m</span> 
+                <span>W</span><span>a</span><span>t</span><span>c</span><span>h</span> 
+                <span>B</span><span>u</span><span>i</span><span>l</span><span>d</span><span>s</span>
             </h1>
             <p>By Chaise Conley</p>
         </div>
@@ -315,6 +337,24 @@
             var modal = document.getElementById("myModal");
             modal.style.display = "none";
         }
+
+        // JavaScript to handle ticking effect
+        const headerSpans = document.querySelectorAll('#ticking-header span');
+        let activeIndex = 0;
+
+        function tickEffect() {
+            // Remove active class from all spans
+            headerSpans.forEach(span => span.classList.remove('active'));
+            
+            // Add active class to the current letter
+            headerSpans[activeIndex].classList.add('active');
+            
+            // Move to the next letter, loop back to 0 if at the end
+            activeIndex = (activeIndex + 1) % headerSpans.length;
+        }
+
+        // Call tickEffect every 1 second
+        setInterval(tickEffect, 1000);
     </script>
 </body>
 </html>
