@@ -12,10 +12,11 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
-            background: linear-gradient(to right, #455a64, #cfd8dc, #455a64); /* Dark on left and right, light in the middle */
+            background: linear-gradient(to right, #37474f, #b0bec5, #37474f); /* Darker on left and right, slightly less bright in the middle */
             margin: 0;
             padding: 0;
         }
+
         .container {
             max-width: 1000px;
             margin: 0 auto;
@@ -41,6 +42,7 @@
             white-space: nowrap;
             letter-spacing: 3px;
             position: relative;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Subtle shadow to enhance visibility */
         }
 
         /* Initial letter styles, no shadow */
@@ -53,7 +55,7 @@
         /* Active ticking effect */
         .header h1 span.active {
             color: #c0c0c0; /* The color of the active ticking letter */
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Stronger shadow for active letter */
         }
 
         .header p {
@@ -61,6 +63,7 @@
             font-size: 1.5em;
             color: silver;
             margin-top: 5px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow for visibility on light background */
         }
 
         /* Swiper Styles */
@@ -119,12 +122,12 @@
 
         .swiper-container::before {
             left: 0;
-            background: linear-gradient(to right, #455a64, rgba(69, 90, 100, 0));
+            background: linear-gradient(to right, #37474f, rgba(55, 71, 79, 0));
         }
 
         .swiper-container::after {
             right: 0;
-            background: linear-gradient(to left, #455a64, rgba(69, 90, 100, 0));
+            background: linear-gradient(to left, #37474f, rgba(55, 71, 79, 0));
         }
 
         /* Navigation arrows */
@@ -156,7 +159,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             letter-spacing: 0.5px;
         }
-        
+
         .contact-button:hover {
             background-color: #37474f;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
