@@ -21,26 +21,51 @@
             margin: 0 auto;
             padding: 20px;
         }
+
+        /* Header container */
         .header {
             margin-bottom: 40px;
-            padding: 10px;
+            padding: 20px;
             background-color: #455a64;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
         }
 
+        /* Ticking effect container */
         .header h1 {
             font-family: 'Lora', serif;
             font-size: 2.5em;
-            color: #2c3e50;
+            color: transparent;
+            background: linear-gradient(to bottom, #c0c0c0, #a9a9a9);
+            -webkit-background-clip: text;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             margin: 0;
             padding-bottom: 0;
+            position: relative;
+            display: inline-block;
+            white-space: nowrap;
         }
-        .header p {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.5em;
-            color: silver;
-            margin-top: 5px;
+
+        /* Animate the ticking effect */
+        .tick {
+            display: inline-block;
+            font-family: 'Lora', serif;
+            font-size: 0.7em;
+            color: #c0c0c0;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            animation: tick-animation 0.166s steps(6, end) infinite; /* 6 ticks per second */
+        }
+
+        /* Keyframes for the ticking effect */
+        @keyframes tick-animation {
+            0% { transform: translateY(-50%) rotate(0deg); }
+            100% { transform: translateY(-50%) rotate(360deg); }
         }
 
         /* Swiper Styles */
@@ -181,10 +206,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1 style="font-family: 'Lora', serif; font-size: 2.5em; color: transparent; background: linear-gradient(to bottom, #c0c0c0, #a9a9a9); -webkit-background-clip: text; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">
-                Custom Watch Builds
-            </h1>
-            <p>By Chaise Conley</p>
+            <h1>Conley Watches</h1>
+            <div class="tick">|</div> <!-- Ticking hand -->
         </div>
 
         <!-- Swiper Slider -->
