@@ -52,20 +52,19 @@
             transition: color 0.3s ease;
         }
 
-        /* Active ticking effect */
-        .header h1 span.active {
-            color: #c0c0c0; /* The color of the active ticking letter */
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Stronger shadow for active letter */
-        }
-
         .header p {
             font-family: 'Dancing Script', cursive;
             font-size: 1.5em;
-            color: silver;
+            color: #a9a9a9; /* Darker gray for better visibility */
             margin-top: 5px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow for visibility on light background */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Darker shadow for better visibility */
         }
-
+        
+        /* Active ticking effect */
+        .header h1 span.active {
+            color: #c0c0c0; /* The color of the active ticking letter */
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* Stronger shadow for active letter */
+        }
         /* Swiper Styles */
         .swiper-container {
             width: 100%;
